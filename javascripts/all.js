@@ -1,0 +1,1 @@
+$(document).ready(function(){$(window).scroll(function(){$(this).scrollTop()>1?$(".menu-wrapper").addClass("menu-scrolled"):$(".menu-wrapper").removeClass("menu-scrolled")})});
