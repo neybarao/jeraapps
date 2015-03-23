@@ -1,0 +1,458 @@
+@import "http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400";
+
+@import "partials/normalize";
+@import "partials/flexiblegs.min";
+@import "partials/flickity";
+
+@import "compass/css3";
+@import "compass/typography/vertical_rhythm";
+@import "compass/css3/transition";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "breakpoint";
+
+// ------------------
+// VARIABLES
+// ------------------
+// typography
+$font-sans: 'Source Sans Pro', sans-serif;
+$fontweight-extralight: 200;
+$fontweight-light: 300;
+$fontweight-regular: 400;
+$base-font-size: 18px;
+// $rhythm-unit: "rem";
+
+// colors
+$primary-color: #84BF41;
+$secondary-color: #fff;
+
+// viewports
+$desktop: 1024px;
+$tablet: max-width 1024px;
+$mobile: max-width 640px;
+
+
+// ------------------
+// THE FUNKIN' CODA
+// ------------------
+html,
+body {
+	height: 100%;
+	font-family: $font-sans;
+	font-size: $base-font-size;
+}
+
+h1 {
+	font-weight: $fontweight-extralight;
+	text-align: center;
+	@include adjust-font-size-to(40px);
+	@include trailer(0);
+
+	@include breakpoint($mobile) {
+		@include adjust-font-size-to(28px);
+		@include trailer(0, 20px);
+		line-height: 1em;
+	}
+}
+
+h2 {
+	font-weight: $fontweight-light;
+	text-align: center;
+	@include adjust-font-size-to(24px);
+	@include leader(0);
+	@include trailer(2);
+
+	@include breakpoint($mobile) {
+		@include adjust-font-size-to(16px);
+	}
+}
+
+a {
+	@include transition(all 0.2s ease 0s);
+	text-decoration: none;
+}
+
+.wrap {
+	max-width: 1180px;
+	margin: auto;
+
+	@include breakpoint($mobile) {
+		max-width: 90%;
+	}
+
+	@include breakpoint($tablet) {
+		max-width: 90%;
+	}
+}
+
+.menu-wrapper {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	height: 100px;
+	@include transition(all 0.2s ease-in-out 0s);
+
+	@include breakpoint($desktop)
+	{
+		width: 100%;
+		position: fixed;
+		z-index: 9999;
+	}
+
+	&.menu-scrolled {
+		@include breakpoint($desktop){
+			height: 60px;
+			background-color: rgba(8, 20, 23, 0.7);
+
+			.jera--logo {
+				height: 60px;
+				line-height: 60px;
+			}
+
+			.jera--menu {
+				a {
+					padding: 18px 20px;
+				}
+			}
+		}
+	}
+
+	.jera--logo {
+		height: 100px;
+		line-height: 100px;
+		text-align: left;
+		@include transition(all 0.2s ease-in-out 0s);
+
+		img {
+			vertical-align: middle;
+		}
+
+		@include breakpoint($tablet) {
+			text-align: center;
+		}
+	}
+
+	.jera--menu {
+		text-align: right;
+		@include transition(all 0.2s ease-in-out 0s);
+
+		@include breakpoint($tablet) {
+			display: none;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				display: inline-block;
+				list-style-type: none;
+			}
+		}
+
+		a {
+			color: $secondary-color;
+			text-decoration: none;
+			font-weight: $fontweight-light;
+			display: block;
+			padding: 38px 20px;
+			@include adjust-font-size-to(18px);
+
+			&:hover {
+				color: $primary-color;
+			}
+		}
+	}
+}
+
+#header {
+	background: url('../images/bg-header.jpg') center center no-repeat #103E4D;
+	padding-bottom: 60px;
+	min-height: 100vh;
+	vertical-align: middle;
+	// min-height: 96%;
+	@include box-sizing(border-box);
+	@include background-size(cover);
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint($mobile) {
+		padding-bottom: 100px;
+		h1 {
+			@include leader(2);
+			@include trailer(1);
+		}
+	}
+
+	.header-content {
+		font-size: inherit;
+	}
+
+	h1 {
+		@include adjust-font-size-to(40px);
+		@include trailer(0);
+		color: $secondary-color;
+
+		@include breakpoint($mobile) {
+			@include adjust-font-size-to(28px);
+			@include trailer(0.5);
+			line-height: 1em;
+		}
+	}
+
+	h2 {
+		@include adjust-font-size-to(24px);
+		// @include trailer(0);
+		color: $primary-color;
+
+		@include breakpoint($mobile) {
+			@include adjust-font-size-to(18px);
+		}
+	}
+
+	.button {
+		display: inline-block;
+		margin: auto;
+		padding: 18px 40px;
+		border: 2px solid $secondary-color;
+		color: $secondary-color;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		&:hover {
+			border-color: $primary-color;
+			background-color: $primary-color;
+			color: $secondary-color;
+		}
+	}
+
+}
+
+#companies {
+	background-color: #E7E7E2;
+	padding-bottom: 60px;
+	border-top: 2px solid #fff;
+	@include box-sizing(border-box);
+
+	.jera-square {
+		display: block;
+		margin: auto;
+		margin-top: -72px;
+		max-width: 100%;
+	}
+
+	.jera--feature {
+		text-align: center;
+		color: #222;
+		font-weight: $fontweight-light;
+		padding: 0 10px;
+
+		@include breakpoint($mobile) {
+			p {
+				@include trailer(2);
+			}
+		}
+	}
+
+	h1 {
+		color: #222;
+	}
+
+	h2 {
+		color: #979797;
+	}
+}
+
+
+#our-work {
+	background-color: #12252A;
+	padding: 60px 0 0;
+	@include box-sizing(border-box);
+	position: relative;
+	// min-height: 100vh;
+
+	h1 {
+		color: #fff;
+	}
+
+	h2 {
+		color: #549CAF;
+		@include trailer(1);
+
+		.fa {
+			color: #FF3E69;
+			@include adjust-font-size-to(14px);
+		}
+	}
+
+	h3 {
+		@include adjust-font-size-to(16px);
+		color: #FF3E69;
+		text-transform: uppercase;
+		font-weight: $fontweight-light;
+	}
+
+	p {
+		@include adjust-font-size-to(16px);
+		color: #549CAF;
+		font-weight: $fontweight-light;
+	}
+}
+
+.gallery-cell {
+	height: 650px;
+}
+
+.jera--carousel {
+	width: 100%;
+	position: relative;
+}
+
+.jera--carousel-item {
+	width: 90%;
+	margin: auto;
+	position: relative;
+	display: flex;
+
+	&:nth-of-type(even) {
+		.jera--carousel-text,
+		.jera--carousel-text h1 {
+			text-align: left;
+		}
+	}
+
+	.jera--carousel-text {
+		text-align: right;
+		padding: 0 30px;
+		flex: 1;
+
+		h1 {
+			text-align: right;
+		}
+	}
+
+	.jera--carousel-image {
+		padding: 0 30px;
+		position: relative;
+		flex: 1;
+
+		img:first-child {
+			position: absolute;
+			top: 114px;
+			left: 50%;
+			margin-left: -161px;
+			z-index: 9;
+		}
+
+		.jera--carousel-device {
+			margin-bottom: -180px;
+			position: relative;
+			height: 100%;
+		}
+	}
+}
+
+#footer {
+	background-color: white;
+	padding: 60px 0;
+	z-index: 999;
+	position: relative;
+	font-size: $base-font-size;
+
+	h1 {
+		@include adjust-font-size-to(40px);
+		@include leader(0);
+		@include trailer(1);
+	}
+
+	footer {
+		padding: 20px;
+		border-top: 1px solid #E6E6E6;
+		border-bottom: 1px solid #E6E6E6;
+	}
+
+	h2 {
+		text-align: left;
+		margin: 0;
+		
+		@include breakpoint($tablet){
+			text-align: center;
+			@include adjust-font-size-to(24px);
+		}
+	}
+
+	p {
+		margin-top: 0;
+		color: #979797;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		a {
+			color: #262626;
+			text-decoration: none;
+			padding: 5px 0;
+			display: inline-block;
+
+			&:hover {
+				color: $primary-color;
+			}
+		}
+
+		.fa {
+			display: inline-block;
+			text-align: center;
+			width: 30px;
+		}
+	}
+
+	.footer--about {
+		padding: 0 10px;
+		text-align: left;
+
+		@include breakpoint($tablet){
+			text-align: center;
+		}
+	}
+	
+	.footer--office {
+		padding: 0 10px;
+		text-align: left;
+
+		@include breakpoint($tablet){
+			text-align: center;
+		}
+	}
+
+	.footer--connect {
+		padding: 0 10px;
+		text-align: left;
+
+		@include breakpoint($tablet){
+			text-align: center;
+
+			li {
+				display: inline-block;
+			}
+		}
+	}
+
+	.copyright {
+		text-align: right;
+		color: #ccc;
+		@include adjust-font-size-to(12px);
+
+		@include breakpoint($tablet){
+			text-align: center;
+		}
+	}
+}
+
+.center {
+	text-align: center;
+}
+
+
